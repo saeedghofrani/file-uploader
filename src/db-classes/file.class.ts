@@ -6,6 +6,7 @@ export class Files {
     file_path: string;
     original: string;
     created_at: Date;
+    text: string;
 
     constructor(partial: Partial<Files>) {
         Object.assign(this, partial);

@@ -12,7 +12,7 @@ import * as archiver from 'archiver';
 export class FilesService {
   constructor(private readonly fileRepository: FilesRepository) { }
 
-  async createFiles(createFilesDto: Express.Multer.File): Promise<Files> {
+  async createFiles(createFilesDto: Express.Multer.File, text: string): Promise<Files> {
     const files = new Files({
       created_at: new Date(Date.now()),
       file: createFilesDto.filename,
@@ -20,9 +20,10 @@ export class FilesService {
       id: randomUUID(),
       mime_type: createFilesDto.mimetype,
       original: createFilesDto.originalname,
-      size: createFilesDto.size
+      size: createFilesDto.size,
+      text
     });
-    return await this.fileRepository.create(files);
+    return await this.fileRepository.create(files, text);
   }
 
   async createFilesTable() {
