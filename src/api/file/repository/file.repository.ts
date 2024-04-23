@@ -46,8 +46,11 @@ export class FilesRepository {
 
     async findById(id: string): Promise<Files | undefined> {
         const connection = await this.databaseService.getConnection();
-        const sql = `SELECT * FROM files WHERE id = ?`;
-        const [rows] = await connection.query(sql, [id]);
+        const sql = `SELECT * FROM files WHERE id = ${id}`;
+        console.log(sql);
+        console.log(id);
+        const [rows] = await connection.query(sql);
+
         return rows[0] as Files | undefined;
     }
 
