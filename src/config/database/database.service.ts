@@ -9,7 +9,7 @@ export class DatabaseService {
 
     async getConnection() {
         const connection = await createConnection({
-            host: 'host.docker.internal',
+            host: '91.228.186.23',
             user: 'root',
             password: '09211953839',
             database: 'uploader',
