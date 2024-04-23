@@ -16,6 +16,8 @@ export class MessageController {
   async findMessageById(
     @Query('id') id: string
   ) {
+    console.log(id);
+
     return await this.messageService.findMessageById(id);
   }
 

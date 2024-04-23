@@ -35,6 +35,7 @@ export class FilesService {
   }
 
   async findFilesById(id: string): Promise<Files> {
+    console.log(id);
     return await this.fileRepository.findById(id);
   }
 
@@ -54,6 +55,7 @@ export class FilesService {
   }
 
   async imageBuffer(id: string, response: Response) {
+    console.log(id);
     const { file_path, original, mime_type } = await this.findFilesById(id);
     response.setHeader('Content-Disposition', `attachment; filename=${original}`);
     response.setHeader('Content-Type', `${mime_type}`);

@@ -78,6 +78,7 @@ export class FileController {
     @Res() response: Response,
     @Query("id") id: string
   ) {
+    console.log(id);
     const file = await this.filesService.imageBuffer(id, response);
     response.send(file);
   }

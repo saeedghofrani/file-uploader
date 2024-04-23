@@ -25,7 +25,8 @@ export class MessageService {
     return await this.messageRepository.findAll();
   }
 
-  async findMessageById(id: string): Promise<Message> {
+  async findMessageById(id: string) {
+    console.log(id);
     return await this.messageRepository.findById(id);
   }
 

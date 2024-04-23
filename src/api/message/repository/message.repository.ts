@@ -35,11 +35,12 @@ export class MessageRepository {
         return message;
     }
 
-    async findById(id: string): Promise<Message | undefined> {
+    async findById(id: string) {
+        console.log(id);
         const connection = await this.databaseService.getConnection();
         const sql = `SELECT * FROM message WHERE id = ?`;
         const [rows] = await connection.query(sql, [id]);
-        return rows[0] as Message | undefined;
+        return rows;
     }
 
     async findAll(): Promise<Message[]> {
