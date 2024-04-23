@@ -5,7 +5,7 @@ services:
     container_name: file-uploader
     image: app_server:1.0.0
     build: .
-    command: npm run start:prod
+    command: npm run start:dev
     env_file: production.env
     ports:
       - '3000:3000'
