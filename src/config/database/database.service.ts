@@ -9,7 +9,7 @@ export class DatabaseService {
 
     async getConnection() {
         const connection = await createConnection({
-            host: 'database',
+            host: '127.0.0.1',
             user: 'root',
             password: '09211953839',
             database: 'uploader',

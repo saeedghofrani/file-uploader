@@ -15,31 +15,6 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     restart: unless-stopped
-    depends_on:
-      - database
-  database:
-    container_name: app_mysql
-    image: mysql
-    env_file: production.env
-    environment:
-      - MYSQL_DATABASE=uploader
-      - MYSQL_ROOT_PASSWORD=09211953839
-    volumes:
-      - db:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - app-network
-    ports:
-      - '3306:3306'
-    healthcheck:
-      test: pg_isready
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
 networks:
   app-network:
-
-volumes:
-  db:
-    driver: local
