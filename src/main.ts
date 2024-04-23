@@ -19,7 +19,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ResponseOkInterceptor());
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
   const appConfigService = app.get<AppConfigService>(AppConfigService);
-  const port = appConfigService.appPort || 4000;
+  const port = appConfigService.appPort || 9229;
   app.setGlobalPrefix(appConfigService.appApiPrefix);
   const config = new DocumentBuilder()
     .setTitle('file Apis')

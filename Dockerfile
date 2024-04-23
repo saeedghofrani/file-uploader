@@ -26,9 +26,9 @@ RUN npm install
 RUN npm run build
 
 
-ENV PORT 3000
+ENV PORT 9229
 
-EXPOSE 3800
+EXPOSE 9229
 
 
 # Start the server using the production build
