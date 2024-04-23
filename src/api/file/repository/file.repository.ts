@@ -19,9 +19,9 @@ export class FilesRepository {
             file VARCHAR(255) NOT NULL,
             file_path VARCHAR(255) NOT NULL,
             original VARCHAR(255) NOT NULL,
-            created_at DATETIME NOT NULL
-            delete_at DATETIME
-            description VARCHAR(255) 
+            created_at DATETIME NOT NULL,
+            delete_at DATETIME,
+            description VARCHAR(255)
           )
         `;
         await connection.query(sql);
@@ -29,7 +29,7 @@ export class FilesRepository {
 
     async create(file: Files, text: string): Promise<Files> {
         const connection = await this.databaseService.getConnection();
-        const sql = `INSERT INTO files (id, mime_type, size, file, file_path, original, created_at, description) 
+        const sql = `INSERT INTO files (id, mime_type, size, file, file_path, original, created_at, description)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         const [result] = await connection.query(sql, [
             file.id,

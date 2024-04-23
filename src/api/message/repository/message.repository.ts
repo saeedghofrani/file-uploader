@@ -25,7 +25,7 @@ export class MessageRepository {
 
     async create(message: Message): Promise<Message> {
         const connection = await this.databaseService.getConnection();
-        const sql = `INSERT INTO message (id, message, created_at) 
+        const sql = `INSERT INTO message (id, message, created_at)
                   VALUES (?, ?, ?)`;
         const [result] = await connection.query(sql, [
             message.id,
