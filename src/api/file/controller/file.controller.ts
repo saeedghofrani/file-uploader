@@ -83,11 +83,11 @@ export class FileController {
     response.send(file);
   }
 
-  @Get('stream')
+  @Get('stream/:id')
   @ApiOperation({ summary: 'download file using stream files' })
   async stream(
     @Res() response: Response,
-    @Query("id") id: string
+    @Param("id") id: string
   ) {
     const file = await this.filesService.imageStream(id, response);
     file.pipe(response);
