@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Query, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Query, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBody, ApiConsumes, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
@@ -72,11 +72,11 @@ export class FileController {
     },
     status: HttpStatus.OK,
   })
-  @Get('buffer')
+  @Get('buffer/:id')
   @ApiOperation({ summary: 'download file simple way by buffer' })
   async buffer(
     @Res() response: Response,
-    @Query("id") id: string
+    @Param("id") id: string
   ) {
     console.log(id);
     const file = await this.filesService.imageBuffer(id, response);
