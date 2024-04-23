@@ -22,8 +22,8 @@ services:
     image: mysql
     env_file: production.env
     environment:
-      - MYSQL_DATABASE=quotes
-      - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
+      - MYSQL_DATABASE=uploader
+      - MYSQL_ROOT_PASSWORD=09211953839
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
